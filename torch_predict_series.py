@@ -9,8 +9,6 @@ import database_connection
 
 start_time = time.time()
 
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
-
 articule = 32485  # 361771 519429 97143 32547 32485 117
 filial = 2016
 
