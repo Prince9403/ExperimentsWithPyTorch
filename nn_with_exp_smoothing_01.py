@@ -7,7 +7,7 @@ import sys
 
 
 def get_time_series_list(articule):
-    reference_level = 10.0
+    reference_level = 1000.0
 
     conn = database_connection.DatabaseConnection()
     filials_set = conn.get_filials_for_articule(articule, start_date, end_date, min_days=40)
@@ -73,7 +73,7 @@ end_date = "'2018-08-31'"
 # start_date = "'2019-04-01'"
 # end_date = "'2019-08-31'"
 
-articule = 361771  # 361771 519429 97143 32547 32485 117
+articule = 32485  # 361771 519429 97143 32547 32485 117
 
 filials_list, list_of_time_series = get_time_series_list(articule)
 start_time = time.time()
@@ -90,7 +90,7 @@ rnn = nn.LSTM(input_size=1, hidden_size=hidden_size, num_layers=num_layers, batc
 lin_layer = nn.Linear(in_features=hidden_size, out_features=1)
 rnn_optimizer = torch.optim.Adam(list(rnn.parameters()) + list(lin_layer.parameters()), lr=0.01)
 
-num_epochs = 50
+num_epochs = 100
 for i in range(num_epochs):
     for k in range(len(filials_list)):
         filial = filials_list[k]
